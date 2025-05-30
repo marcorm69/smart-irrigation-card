@@ -2,6 +2,6 @@
   "name": "smart-irrigation-card",
   "description": "Custom Lovelace card for zone smart irrigation systems in Home Assistant",
   "type": "module",
-  "files": ["dist/smart-irrigation-card.js"]
+  "files": ["dist/smart-irrigation-card.js"],
   "version": "1.0.0-beta"
 }

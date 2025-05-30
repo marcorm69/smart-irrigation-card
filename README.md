@@ -1,4 +1,5 @@
-![Static Badge](https://img.shields.io/badge/version-v1.0.0_beta-brightgreen)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmarcorm69%2Fsmart-irrigation-card%2Frefs%2Fheads%2Fmain%2Fcustom_elements.json&query=%24.version)
+ ![Static Badge](https://img.shields.io/badge/license-Apache%20License%202.0-green?style=for-the-badge&logo=opensourceinitiative&logoColor=%23ffffff) [![Donate with PayPal](https://img.shields.io/badge/donate-paypal-blue?style=for-the-badge)](https://www.paypal.com/donate/?business=48MF452S8876J&currency_code=EUR)
 
 # Zone Smart Irrigation card
 

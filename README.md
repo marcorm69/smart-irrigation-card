@@ -7,7 +7,8 @@
 
 ![Preview](images/screen_off.jpg)
 
-![Preview](images/search_card.jpg) ![Preview](images/config_card.jpg)
+<img src="images/search_card.jpg" alt="Preview" width="200"/> <img src="images/config_card.jpg" alt="Preview" width="200"/>
+
 
 Custom integration for Home Assistant to manager a Zone Smart Irrigation System.
 

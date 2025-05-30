@@ -4,9 +4,10 @@
 
 
 ![Preview](images/screen.jpg)
+
 ![Preview](images/screen_off.jpg)
-![Preview](images/search_card.jpg)
-![Preview](images/config_card.jpg)
+
+![Preview](images/search_card.jpg) ![Preview](images/config_card.jpg)
 
 Custom integration for Home Assistant to manager a Zone Smart Irrigation System.
 

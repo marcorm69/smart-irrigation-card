@@ -7,7 +7,7 @@
 
 ![Preview](images/screen_off.jpg)
 
-<img src="images/search_card.jpg" alt="Preview" width="200"/> <img src="images/config_card.jpg" alt="Preview" width="200"/>
+<img src="images/search_card.jpg" alt="Preview" width="300"/> <img src="images/config_card.jpg" alt="Preview" width="300"/>
 
 
 Custom integration for Home Assistant to manager a Zone Smart Irrigation System.
@@ -56,7 +56,7 @@ See the LICENSE file for details.
 
 ### Manual
 
-1. Copy the folder `smart-irrigation-card` in `/config/www/`
+1. Copy the files in  `dist` in `/config/www/smart-irrigation-card/`
 ```
 <config directory>/
 |-- www/

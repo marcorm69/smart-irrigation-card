@@ -4,12 +4,28 @@
 
 
 ![Preview](images/screen.jpg)
+![Preview](images/screen_off.jpg)
+![Preview](images/search_card.jpg)
+![Preview](images/config_card.jpg)
 
 Custom integration for Home Assistant to manager a Zone Smart Irrigation System.
 
 > ⚠️ **Nota importante:**  
 > This card working with a Zone Smart Irrigation integration
 > https://github.com/marcorm69/zone-smart-irrigation
+
+The card allows you to manage multi-zone irrigation, based on the Zone Smart Irrigation integration.
+In the configuration window, simply choose one of the zones created through integration from a comboBox to manage that zone.
+
+Features
+	* You can activate or deactivate each individual zone.
+	* When deactivated, the card will only display the zone name and the manual irrigation line.
+	* When activated, a weekly calendar and 4 time slots will be shown.
+	* You can select the days of the week to start irrigation based on the times defined by the time slots below.
+	* Time slot 1 is always active (only deactivated if the zone itself is deactivated).
+	* The other time slots can be toggled on or off at will.
+	* For each time slot, you can set the start time and irrigation duration.
+
 
 
 > This guide is still incomplete.  

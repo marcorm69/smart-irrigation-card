@@ -45,12 +45,23 @@ class SmartIrrigationZoneCard extends HTMLElement {
       throw new Error("You need to define physical_switch_entity for manual control");
     }
   
+    // Funzione helper per normalizzare i nomi delle zone
+    const normalizeZoneName = (zoneName) => {
+      return zoneName.toLowerCase().replace(/\s+/g, '_');
+    };
 
+    // Usa il nome originale per il titolo, ma normalizza per gli ID delle entità
+    const normalizedZoneName = normalizeZoneName(config.zone_name);
+    console.log(normalizedZoneName)
     this.config = {
       ...config,
-      zone_title: config.zone_name.toUpperCase(),
-      zone_name: config.zone_name.toLowerCase(), // Assicurati che zone_name sia sempre minuscolo
-      manual_duration_entity: `number.${config.zone_name.toLowerCase()}_manual_duration`,
+      zone_title: config.zone_name.toUpperCase(), // Mantieni il nome originale per visualizzazione
+      zone_name: normalizedZoneName, // Usa il nome normalizzato per gli ID delle entità
+      manual_duration_entity: `number.${normalizedZoneName}_manual_duration`,
+
+      //zone_title: config.zone_name.toUpperCase(),
+      //zone_name: config.zone_name.toLowerCase(), // Assicurati che zone_name sia sempre minuscolo
+      //manual_duration_entity: `number.${config.zone_name.toLowerCase()}_manual_duration`,
     };
 
     if (!this.shadowRoot) {

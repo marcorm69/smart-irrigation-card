@@ -121,6 +121,53 @@ import {
   
           console.log("DEBUG Editor: Nuova config:", this._config);
       }
+
+      /**
+       * Gestisce i cambiamenti dei colori
+       */
+      _colorChanged(e) {
+          const configKey = e.target.dataset.configKey;
+          const value = e.target.value;
+          
+          console.log("DEBUG Editor: Colore cambiato:", configKey, value);
+          
+          this._config = {
+              ...this._config,
+              [configKey]: value
+          };
+          
+          this.dispatchEvent(new CustomEvent('config-changed', {
+              bubbles: true,
+              composed: true,
+              detail: { config: this._config }
+          }));
+      }
+
+      /**
+       * Reset ai colori di default
+       */
+      _resetColorsToDefault() {
+          console.log("DEBUG Editor: Reset colori ai default");
+          
+          const defaultColors = {
+              border_color: '#50c878',
+              background_color: '#64646466',
+          };
+          
+          this._config = {
+              ...this._config,
+              ...defaultColors
+          };
+          
+          this.dispatchEvent(new CustomEvent('config-changed', {
+              bubbles: true,
+              composed: true,
+              detail: { config: this._config }
+          }));
+          
+          // Forza il re-render per aggiornare i color picker
+          this.requestUpdate();
+      }
   
       /**
        * Funzione helper per ottenere gli switch disponibili per la zona corrente
@@ -136,18 +183,8 @@ import {
           const selectZoneLabel = "Seleziona Zona di Irrigazione";
   
           return html`
-              <style>
-                  .container { padding: 16px; }
-                  .form-group { margin-bottom: 16px; }
-                  ha-combo-box { display: block; width: 100%; }
-                  .info { 
-                      font-size: 12px; 
-                      color: var(--secondary-text-color); 
-                      margin-top: 4px; 
-                  }
-              </style>
-              
               <div class="container">
+                  <!-- Sezione selezione zona -->
                   <div class="form-group">
                       <ha-combo-box
                           .hass="${this._hass}"
@@ -177,6 +214,43 @@ import {
                           </div>
                       </div>
                   ` : ''}
+
+                  <!-- Sezione personalizzazione colori -->
+                  <div class="form-group">
+                      <div class="color-header">
+                          <h3>Personalizzazione Colori</h3>
+                          <button 
+                              class="reset-button"
+                              @click=${this._resetColorsToDefault}
+                              title="Ripristina colori di default">
+                              🔄 Reset
+                          </button>
+                      </div>
+                      
+                      
+                      <div class="color-option">
+                          <label>Colore bordo:</label>
+                          <input
+                              type="color"
+                              .value=${this._config.border_color || '#888888'}
+                              @change=${this._colorChanged}
+                              data-config-key="border_color"
+                          />
+                          <span class="color-value">${this._config.border_color || '#888888'}</span>
+                      </div>
+
+                      <div class="color-option">
+                          <label>Colore sfondo:</label>
+                          <input
+                              type="color"
+                              .value=${this._config.background_color || '#1f1f1f'}
+                              @change=${this._colorChanged}
+                              data-config-key="background_color"
+                          />
+                          <span class="color-value">${this._config.background_color || '#1f1f1f'}</span>
+                      </div>
+
+                  </div>
               </div>
           `;
       }
@@ -189,16 +263,100 @@ import {
                   border-radius: var(--ha-card-border-radius, 12px);
                   box-shadow: var(--ha-card-box-shadow, 0px 2px 4px 0px rgba(0,0,0,0.16));
               }
+              
               .form-group {
-                  margin-bottom: 16px;
+                  margin-bottom: 24px;
               }
+              
+              .form-group h3 {
+                  margin: 0 0 12px 0;
+                  color: var(--primary-text-color);
+                  font-size: 16px;
+                  font-weight: 500;
+              }
+              
+              .color-header {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 12px;
+              }
+              
+              .reset-button {
+                  background: var(--primary-color);
+                  color: var(--text-primary-color, white);
+                  border: none;
+                  padding: 6px 12px;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 12px;
+                  font-weight: 500;
+                  transition: all 0.2s ease;
+              }
+              
+              .reset-button:hover {
+                  background: var(--primary-color);
+                  opacity: 0.8;
+                  transform: translateY(-1px);
+              }
+              
+              .reset-button:active {
+                  transform: translateY(0);
+              }
+              
               .info {
                   font-size: 12px;
                   color: var(--secondary-text-color);
-                  margin-top: 4px;
+                  margin-top: 8px;
                   padding: 8px;
                   background: var(--divider-color);
                   border-radius: 4px;
+              }
+              
+              .color-option {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 12px;
+                  gap: 12px;
+              }
+              
+              .color-option label {
+                  min-width: 120px;
+                  font-size: 14px;
+                  color: var(--primary-text-color);
+              }
+              
+              .color-option input[type="color"] {
+                  width: 40px;
+                  height: 32px;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  background: none;
+              }
+              
+              .color-option input[type="color"]::-webkit-color-swatch-wrapper {
+                  padding: 0;
+                  border-radius: 4px;
+              }
+              
+              .color-option input[type="color"]::-webkit-color-swatch {
+                  border: 1px solid var(--divider-color);
+                  border-radius: 4px;
+              }
+              
+              .color-value {
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: var(--secondary-text-color);
+                  background: var(--code-editor-background-color, #f0f0f0);
+                  padding: 2px 6px;
+                  border-radius: 3px;
+              }
+              
+              ha-combo-box {
+                  display: block;
+                  width: 100%;
               }
           `;
       }

@@ -88,11 +88,14 @@ class SmartIrrigationZoneCard extends HTMLElement {
   }
 
   _createStyles() {
+    const borderColor = this.config.border_color || '#50c878';
+    const backgroundColor = this.config.background_color || '#64646466';
+    
     const style = document.createElement('style');
     style.textContent = `
       .card-container {
         border-radius: 5px;
-        background: rgba(100, 100, 100, 0.4);
+        background: ${backgroundColor};
         padding: 5px;
         font-family: Oswald, sans-serif;
         display: flex;
@@ -136,7 +139,7 @@ class SmartIrrigationZoneCard extends HTMLElement {
         color: var(--zone-name-color, gray);
       }
       .zone-switch-card.on {
-        --zone-border-color: rgb(80, 200, 120);
+        --zone-border-color: ${borderColor};
         --zone-icon-color: orange;
         --zone-name-color: orange;
       }
@@ -1181,11 +1184,28 @@ _toggleSwitch(entityId) {
 
   _stopIrrigation() {
     if (!this._hass) return;
+    
     const physicalSwitchState = this.config.physical_switch_entity;
+    
+    // Controlla se l'irrigazione è attiva
     if (this._hass.states[physicalSwitchState]?.state === 'on') {
-      this._hass.callService("switch", "turn_off", {
-        entity_id: physicalSwitchState
-      });
+        // Usa il servizio irrigation_control per lo stop invece di spegnere direttamente lo switch
+        this._hass.callService(
+            'zone_smart_irrigation',
+            'irrigation_control',
+            {
+                action: 'stop',
+                switch_entity: physicalSwitchState
+            }
+        ).then(() => {
+            console.log('✓ IRRIGAZIONE FERMATA CON SUCCESSO!');
+        }).catch((error) => {
+            console.error('✗ ERRORE nello stop irrigazione:', error);
+            // Fallback: se il servizio fallisce, spegni direttamente lo switch
+            this._hass.callService("switch", "turn_off", {
+                entity_id: physicalSwitchState
+            });
+        });
     }
   }
 

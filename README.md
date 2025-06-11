@@ -108,8 +108,8 @@ The **Zone Smart Irrigation Card** is a custom card for Home Assistant that allo
 
 ```yaml
 type: custom:smart-irrigation-card
-entity: irrigation.garden_zone
-name: "Garden Irrigation"
+zone_name: <zone_name> (configurated with integration)
+physical_switch_entity: irrigation.garden_zone
 ```
 
 ---

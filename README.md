@@ -1,11 +1,11 @@
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmarcorm69%2Fsmart-irrigation-card%2Frefs%2Fheads%2Fmain%2Fcustom_elements.json&query=%24.version&style=flat&label=VERSION)
- ![Static Badge](https://img.shields.io/badge/license-Apache%20License%202.0-green?style=flat&logo=opensourceinitiative&logoColor=%23ffffff) ![Static Badge](https://img.shields.io/badge/HACS-DEFAULT-DEFAULT?style=flat&url=https%3A%2F%2Fgithub.com%2Fmarcorm69%2Fsmart-irrigation-card) [![Donate with PayPal](https://img.shields.io/badge/donate-paypal-blue?style=flat&logo=paypal)](https://www.paypal.com/donate/?business=48MF452S8876J&currency_code=EUR)
+ ![Static Badge](https://img.shields.io/badge/license-Apache%20License%202.0-green?style=flat&logo=opensourceinitiative&logoColor=%23ffffff) ![Static Badge](https://img.shields.io/badge/HACS-DEFAULT-DEFAULT?style=flat&link=https%3A%2F%2Fgithub.com%2Fmarcorm69%2Fsmart-irrigation-card) [![Donate with PayPal](https://img.shields.io/badge/donate-paypal-blue?style=flat&logo=paypal)](https://www.paypal.com/donate/?business=48MF452S8876J&currency_code=EUR)
 
 # Zone Smart Irrigation card
 
 
 <img src="images/screen.jpg" alt="Preview" width="50%">
-<img src="images/screen_off.jpg" alt="Preview" width="50%"><img src="images/screen_card.jpg" alt="Preview" width="50%">
+<img src="images/screen_off.jpg" alt="Preview" width="50%"><img src="images/search_card.jpg" alt="Preview" width="50%">
 
 
 Custom integration for Home Assistant to manager a Zone Smart Irrigation System.

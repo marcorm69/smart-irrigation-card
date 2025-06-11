@@ -1,86 +1,160 @@
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmarcorm69%2Fsmart-irrigation-card%2Frefs%2Fheads%2Fmain%2Fcustom_elements.json&query=%24.version&style=flat&label=VERSION)
- ![Static Badge](https://img.shields.io/badge/LICENSE-Apache%20License%202.0-green?style=flat&logo=opensourceinitiative&logoColor=%23ffffff) ![Static Badge](https://img.shields.io/badge/HACS-DEFAULT-DEFAULT?style=flat&link=https%3A%2F%2Fgithub.com%2Fmarcorm69%2Fsmart-irrigation-card) [![Donate with PayPal](https://img.shields.io/badge/DONATE-PAYPAL-blue?style=flat&logo=paypal)](https://www.paypal.com/donate/?business=48MF452S8876J&currency_code=EUR)
+# 🌱 Zone Smart Irrigation Card
 
-# Zone Smart Irrigation card
+<div align="center">
+  
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fmarcorm69%2Fsmart-irrigation-card%2Frefs%2Fheads%2Fmain%2Fcustom_elements.json&query=%24.version&style=for-the-badge&label=VERSION&color=brightgreen)
+![Static Badge](https://img.shields.io/badge/LICENSE-Apache%20License%202.0-green?style=for-the-badge&logo=opensourceinitiative&logoColor=%23ffffff)
+![Static Badge](https://img.shields.io/badge/HACS-DEFAULT-41BDF5?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white)
+[![Donate with PayPal](https://img.shields.io/badge/DONATE-PAYPAL-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?business=48MF452S8876J&currency_code=EUR)
 
+**A custom card for Home Assistant to manage smart multi-zone irrigation systems**
 
-<img src="images/screen.jpg" alt="Preview" width="50%">
-<img src="images/screen_off.jpg" alt="Preview" width="50%"><img src="images/search_card.jpg" alt="Preview" width="50%">
+[🏠 Home Assistant](https://www.home-assistant.io/) | [📋 Installation](#-installation) | [⚙️ Configuration](#%EF%B8%8F-configuration) | [🐛 Issues](https://github.com/marcorm69/smart-irrigation-card/issues)
 
+</div>
 
-Custom integration for Home Assistant to manager a Zone Smart Irrigation System.
+---
 
-> ⚠️ **IMPORTANT**  
-> This card working with a Zone Smart Irrigation integration
-> https://github.com/marcorm69/zone-smart-irrigation
+## 📸 Preview
 
-The card allows you to manage multi-zone irrigation, based on the Zone Smart Irrigation integration.
-In the configuration window, simply choose one of the zones created through integration from a comboBox to manage that zone.
+<div align="center">
+  <img src="images/screen.jpg" alt="Active card" width="45%">
+  <img src="images/screen_off.jpg" alt="Inactive card" width="45%">
+</div>
 
-Features
-	* You can activate or deactivate each individual zone.
-	* When deactivated, the card will only display the zone name and the manual irrigation line.
-	* When activated, a weekly calendar and 4 time slots will be shown.
-	* You can select the days of the week to start irrigation based on the times defined by the time slots below.
-	* Time slot 1 is always active (only deactivated if the zone itself is deactivated).
-	* The other time slots can be toggled on or off at will.
-	* For each time slot, you can set the start time and irrigation duration.
+<div align="center">
+  <img src="images/search_card.jpg" alt="Card search" width="50%">
+</div>
 
+---
 
+## 🎯 Overview
 
-> This guide is still incomplete.  
-> The code still has some shortcomings.  
-> This work is part of my spare time, I can't give any indication when it will be completed.  
+The **Zone Smart Irrigation Card** is a custom card for Home Assistant that allows you to manage multi-zone irrigation systems in an intuitive and comprehensive way. This card works in perfect synergy with the [Zone Smart Irrigation](https://github.com/marcorm69/zone-smart-irrigation) integration.
 
+> ⚠️ **IMPORTANT PREREQUISITE**  
+> This card requires the **Zone Smart Irrigation** integration to work properly.  
+> 👉 [Download the integration here](https://github.com/marcorm69/zone-smart-irrigation)
 
-## Disclaimer
+---
 
-This project is distributed in the hope that it will be useful,  
-but WITHOUT ANY WARRANTY; without even the implied warranty of  
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+## ✨ Key Features
 
-The author shall not be held liable for any damage or loss caused by the use of this software.  
-Use at your own risk.
+### 🔧 **Smart Zone Management**
+- ✅ Enable/disable each individual zone
+- 📅 Integrated weekly calendar
+- ⏰ Management of 4 time slots per zone
 
+### 📱 **Intuitive Interface**
+- 🎨 Responsive and modern design
+- 🔍 Zone selection via comboBox
+- 👁️ Simplified view for disabled zones
 
-## License
+### ⏱️ **Advanced Scheduling**
+- 📆 Day of the week selection
+- 🕐 Customizable start time
+- ⏳ Configurable irrigation duration
+- 🎯 Time slot 1 always active (when zone is active)
+- 🔀 Other slots can be toggled on/off at will
 
-This project is licensed under the Apache License 2.0.
+---
 
-See the LICENSE file for details.
+## 🚀 Installation
 
+### 📦 Via HACS (Recommended)
 
-## Installation
+1. **Open HACS** in your Home Assistant
+2. Go to **Frontend**
+3. Click the **three dots** in the top right
+4. Select **Custom repositories**
+5. Add this URL: `https://github.com/marcorm69/smart-irrigation-card`
+6. Select category: **Lovelace**
+7. **Install** the card
+8. **Restart** Home Assistant
 
+### 🔧 Manual Installation
 
-<a href="https://hacs.xyz/">Try HACS first</a>
+1. **Download files** from the `dist` folder
+2. **Copy** files to `/config/www/smart-irrigation-card/`
 
-### Manual
-
-1. Copy the files in  `dist` in `/config/www/smart-irrigation-card/`
 ```
 <config directory>/
-|-- www/
-|   |-- smart-irrigation-card/
-|       |-- smart-irrigation-card.js
-|       |-- smart-irrigation-card-editor.js
-|       |-- smart-irrigation-zone-card.manifest.json
+├── www/
+│   └── smart-irrigation-card/
+│       ├── smart-irrigation-card.js
+│       ├── smart-irrigation-card-editor.js
+│       └── smart-irrigation-zone-card.manifest.json
 ```
 
-2. Import the module
+3. **Add resource** in Home Assistant:
+   - Go to **Settings** ➜ **Dashboards** ➜ **Resources**
+   - Click **Add Resource**
+   - **URL**: `/local/smart-irrigation-card/smart-irrigation-card.js`
+   - **Type**: `JavaScript Module`
 
-Go to to UI **Settings > Integration > Resource (three dots)** and add resource 
-URL: <config directory>/www/smart-irrigation-card/smart-irrigation-card.js
-Type: module
+4. **Restart** Home Assistant
 
-## Configuration
+---
 
-1. Go to your dashboard\view
-2. Click Edit 
-3. Click "Add card"
-4. Search "Smart Irrigation Card"
+## ⚙️ Configuration
 
-In configuration window choose the area you want to display among those configured with the integration.
+### 🎛️ **Adding the Card**
 
-Enjoy
+1. 🏠 Go to your **dashboard**
+2. ✏️ Click **Edit**
+3. ➕ Click **Add Card**
+4. 🔍 Search for **"Smart Irrigation Card"**
+5. 🎯 Select the **zone** from the dropdown menu
+6. 💾 **Save** the configuration
 
+### 📋 **YAML Configuration (Optional)**
+
+```yaml
+type: custom:smart-irrigation-card
+entity: irrigation.garden_zone
+name: "Garden Irrigation"
+```
+
+---
+
+## 🛠️ Project Status
+
+> 📝 **Development Note**  
+> This project is currently in **active development**. Some features may not be complete and documentation is continuously being updated.
+> 
+> ⏳ Being a project developed in spare time, I cannot provide precise timelines for completion.
+> 
+> 🤝 **Contributions welcome!** Feel free to open issues or pull requests.
+
+---
+
+## 🆘 Support
+
+- 🐛 **Bug reports**: [Open an issue](https://github.com/marcorm69/smart-irrigation-card/issues)
+- 💡 **Feature requests**: [Discussions](https://github.com/marcorm69/smart-irrigation-card/discussions)
+- 💖 **Support the project**: [![PayPal](https://img.shields.io/badge/PayPal-Donate-blue)](https://www.paypal.com/donate/?business=48MF452S8876J&currency_code=EUR)
+
+---
+
+## ⚖️ License and Disclaimer
+
+### 📄 **License**
+This project is released under **Apache License 2.0**.  
+See the [LICENSE](LICENSE) file for complete details.
+
+### ⚠️ **Disclaimer**
+This project is distributed in the hope that it will be useful, but **WITHOUT ANY WARRANTY**; without even the implied warranty of **MERCHANTABILITY** or **FITNESS FOR A PARTICULAR PURPOSE**.
+
+The author shall not be held liable for any damage or loss caused by the use of this software.
+
+**Use at your own risk.**
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the Home Assistant Community**
+
+⭐ If this project is useful to you, please leave a star on GitHub!
+
+</div>

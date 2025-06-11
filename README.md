@@ -52,6 +52,9 @@ See the LICENSE file for details.
 
 ## Installation
 
+
+<a href="https://hacs.xyz/">Try HACS first</a>
+
 ### Manual
 
 1. Copy the files in  `dist` in `/config/www/smart-irrigation-card/`

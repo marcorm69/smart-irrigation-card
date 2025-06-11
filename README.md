@@ -63,6 +63,8 @@ The **Zone Smart Irrigation Card** is a custom card for Home Assistant that allo
 
 ### 📦 Via HACS (Recommended)
 
+[![Apri in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=marcorm69&repository=smart-irrigation-card&category=lovelace)
+
 1. **Open HACS** in your Home Assistant
 2. Go to **Frontend**
 3. Search "Smart Irrigation card"
